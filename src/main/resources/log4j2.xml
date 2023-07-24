@@ -3,17 +3,17 @@
 
     <Appenders>
         <RollingFile name="LogToFile" fileName="logs/hippodrome.log" filePattern="logs/hippodrome.%d{yyyy-MM-dd}.log" ignoreExceptions="false">
-            <PatternLayout>
-                <pattern> %d %-5p %c: %m%n</pattern>
-            </PatternLayout>
-            <!-- Max 10 files will be created everyday -->
-            <DefaultRolloverStrategy max="10">
+            <PatternLayout pattern = "%d %-5p %c: %m%n"/>
+            <TimeBasedTriggeringPolicy/>
+
+            <DefaultRolloverStrategy>
                 <Delete basePath="logs" maxDepth="2">
                     <!-- Delete all files older than 7 days -->
                     <IfFileName glob="hippodrome.*.log"/>
                     <IfLastModified age="7d" />
                 </Delete>
             </DefaultRolloverStrategy>
+
         </RollingFile>
     </Appenders>
 
